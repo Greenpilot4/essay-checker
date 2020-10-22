@@ -1,7 +1,7 @@
 import string 
 import sys
 
-# Open the file in read mode 
+# Check for arguments
 argv = sys.argv
 if len(argv) == 1:
   print("Usuage: python main.py textfile")
@@ -9,6 +9,7 @@ if len(argv) == 1:
 
 text = open(argv[2], "r") 
 
+# Create word lists
 dwlist = ['so', 'fun', 'cute', 'really', 'things', 'interesting', 'very', 'nice', 'good', 'great', 'dumb', 'boring', 'exciting', 'neat', 'a lot', 'alot', 'stuff', 'awesome']
 bvlist = ['is', 'was', 'were', 'am', 'are', 'be', 'being', 'been']
 
@@ -40,7 +41,8 @@ for line in text:
 		elif word in dwlist: 
 			# Add the word to dictionary with count 1 
 			d[word] = 1
-
+			
+	# Iterate over each word in line 
 	for word in words: 
 		# Check if the word is already in dictionary 
 		if word in b: 
