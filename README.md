@@ -1,2 +1,2 @@
-Counts words in a text file. 
-Usage: python main.py filename.txt
+Counts occurrences of words in a file. 
+Usage: python main.py file
