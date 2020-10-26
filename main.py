@@ -4,7 +4,7 @@ import sys
 # Check for arguments
 argv = sys.argv
 if len(argv) == 1:
-  print("Usuage: python main.py textfile")
+  print("Usuage: python main.py file")
   quit()
 
 text = open(argv[2], "r") 
