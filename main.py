@@ -3,10 +3,8 @@
 # Import Colorama for epic
 
 from colorama import Fore
+from readoc import *
 import string
-
-# Clear screen
-print('\033[2J')
 
 # Make fun of Devin
 print(Fore.RED + """"\
@@ -19,9 +17,14 @@ print(Fore.RED + """"\
  ░ ▒  ▒  ░ ░  ░  ░ ░░   ▒ ░░ ░░   ░ ▒░   ░ ░▒  ░ ░░░▒░ ░ ░   ░  ▒   ░ ░▒ ▒░░ ░▒  ░ ░ 
 """ + Fore.RESET)
 
+# Used to gather user input
+# Went this way so I could later
+# Create Optional inputs
 def prompt(text):
     return input(text).strip()
 
+# Optional if theres nothing
+# It returns piltos (never being used)
 def optional(text, default):
     var = prompt(text)
     if var:
@@ -30,10 +33,20 @@ def optional(text, default):
         return default
 
 # Prompt for file name
-essay_prompt = prompt("Please provide file name: ")
+essay_prompt = prompt("Please provide file name (or link): ")
 
-# Read file
-essay = open(essay_prompt)
+# Checks if its a link
+# If it is it grabs content
+# And saves it to a .txt file
+if "https:" in essay_prompt:
+    document_id_link = essay_prompt.split('/')[-2]
+    var = read_document(document_id_link)
+    price = 33.3
+    with open("temp.txt", "w") as text_file:
+        text_file.write(var)
+    essay = open("temp.txt")
+else:
+    essay = open(essay_prompt)
 
 # Prompt for other words
 word_prompt = optional("Any other words to look for? (Separated by spaces) ", "piltos")
@@ -155,5 +168,6 @@ if cwlist is not False:
         print('Total custom words: ', sum(c.values()))
 else:
     print('\nNo custom words found.')
+
 
 

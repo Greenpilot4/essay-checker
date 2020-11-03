@@ -7,3 +7,6 @@
 .idea/modules.xml
 .idea/vcs.xml
 colorama/
+credentials.json
+token.json
+temp.txt
