@@ -3,7 +3,7 @@ import sys
 
 # Check for arguments
 argv = sys.argv
-if len(argv) == 0:
+if len(argv) == 1:
   print("Usuage: python main.py file")
   quit()
 
