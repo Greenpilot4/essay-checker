@@ -1,9 +1,9 @@
 # Import String for handling words
 # Import Sys for handling
 # Import Colorama for epic
+
 from colorama import Fore
 import string
-import sys
 
 # Clear screen
 print('\033[2J')
@@ -19,11 +19,29 @@ print(Fore.RED + """"\
  ░ ▒  ▒  ░ ░  ░  ░ ░░   ▒ ░░ ░░   ░ ▒░   ░ ░▒  ░ ░░░▒░ ░ ░   ░  ▒   ░ ░▒ ▒░░ ░▒  ░ ░ 
 """ + Fore.RESET)
 
+def prompt(text):
+    return input(text).strip()
+
+def optional(text, default):
+    var = prompt(text)
+    if var:
+        return var
+    else:
+        return default
+
 # Prompt for file name
-text_prompt = input("Please provide file name: ")
+essay_prompt = prompt("Please provide file name: ")
 
 # Read file
-text = open(text_prompt)
+essay = open(essay_prompt)
+
+# Prompt for other words
+word_prompt = optional("Any other words to look for? (Separated by spaces) ", "piltos")
+if word_prompt == "piltos":
+    print("No other words specified")
+    cwlist = False
+else:
+    cwlist = word_prompt.split()
 
 # Create word lists
 dwlist = [
@@ -60,9 +78,10 @@ bvlist = [
 # Create an empty dictionary
 d = dict()
 b = dict()
+c = dict()
 
 # Loop through each line of the file
-for line in text:
+for line in essay:
     # Remove the leading spaces and newline character
     line = line.strip()
 
@@ -98,6 +117,18 @@ for line in text:
             # Add the word to dictionary with count 1
             b[word] = 1
 
+    if cwlist is not False:
+        # Iterate over each word in line
+        for word in words:
+            # Check if the word is already in dictionary
+            if word in c:
+                # Increment count of word by 1
+                c[word] = c[word] + 1
+
+            elif word in cwlist:
+                # Add the word to dictionary with count 1
+                c[word] = 1
+
 # Print the contents of dictionary
 if d:
     print('Dead words')
@@ -115,3 +146,14 @@ if b:
     print('Total be verbs: ', sum(b.values()))
 else:
     print('No be verbs found.')
+
+if cwlist is not False:
+    if c:
+        print("\nOther Words")
+        for key in list(c.keys()):
+            print(key, "\b:", c[key])
+        print('Total custom words: ', sum(c.values()))
+else:
+    print('\nNo custom words found.')
+
+
