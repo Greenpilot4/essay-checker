@@ -4,7 +4,7 @@ import sys
 # Check for arguments
 argv = sys.argv
 if len(argv) == 1:
-  print("Usage: python main.py file")
+  print("Usuage: python main.py file")
   quit()
 
 text = open(argv[1], "r") 
@@ -56,7 +56,7 @@ for line in text:
 if d:
   print("Dead words")
   for key in list(d.keys()):
-    print(key, ":", d[key])
+    print(key, "\b:", d[key])
   print("Total dead words: ", sum(d.values()))
 else:
   print("No dead words found.")
@@ -64,7 +64,7 @@ else:
 if b:
   print("\nBe verbs")
   for key in list(b.keys()):
-    print(key, ":", b[key])
+    print(key, "\b:", b[key])
   print("Total be verbs: ", sum(b.values()))
 else:
   print("No be verbs found.")
