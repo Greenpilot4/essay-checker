@@ -3,11 +3,11 @@ import sys
 
 # Check for arguments
 argv = sys.argv
-if len(argv) == 1:
+if len(argv) == 0:
   print("Usuage: python main.py file")
   quit()
 
-text = open(argv[2], "r") 
+text = open(argv[1], "r") 
 
 # Create word lists
 dwlist = ['so', 'fun', 'cute', 'really', 'things', 'interesting', 'very', 'nice', 'good', 'great', 'dumb', 'boring', 'exciting', 'neat', 'a lot', 'alot', 'stuff', 'awesome']
