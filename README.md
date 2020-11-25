@@ -10,6 +10,6 @@ Use custom words by listing and separating with spaces.
  Once you've gone through the steps download the "credentials.json" file and drag in folder 
  
  After that you can run it and the first time you will need to allow access to your google account.
-# Credit Goes to 9qq-qq-qq9
+# Credit 9qq-qq-qq9
 
 Forked from https://github.com/9qq-qq-qq9/word-counter- 
